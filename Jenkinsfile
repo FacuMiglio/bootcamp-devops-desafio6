@@ -17,10 +17,5 @@ pipeline {
                 sh 'echo "<h1>Hello from Jenkins Pipeline 31/08/2024 22:46</h1> " '
             }
         }
-        post {
-            always {
-                cleanWs()
-            }
-        }
     }
 }
