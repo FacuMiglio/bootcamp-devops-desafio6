@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Check Apache') {
             steps {
-                sh 'echo "Verificando instalación de Apache"'
+                sh 'echo "Verificando instalación de Apache.."'
                 
             }
         }
