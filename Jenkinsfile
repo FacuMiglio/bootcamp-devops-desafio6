@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/TuUsuario/web-deploy.git'
+                git branch: 'main', url: 'https://github.com/FacuMiglio/bootcamp-devops-desafio6.git'
             }
         }
         stage('Check Apache') {
