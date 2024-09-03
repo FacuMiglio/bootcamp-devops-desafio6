@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'agente_007'}
     stages {
         stage('Check Apache') {
             steps {
