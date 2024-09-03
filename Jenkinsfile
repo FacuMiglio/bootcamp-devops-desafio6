@@ -2,6 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Check Apache') {
+            agent any
             steps {
                 sh 'echo "Verificando instalación de Apache.."'
                 
