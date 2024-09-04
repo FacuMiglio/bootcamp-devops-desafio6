@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh 'echo "Verificando instalación de Apache"'
                 status=$sh 'ssh facu@192.168.100.20 sudo systemctl is-active apache2'
-                if [ "$status" = "active" ]; then
+                if ( "$status" == "active" ); then
                     echo "Apache2 está corriendo."
                 else
                     echo "Apache2 no está corriendo."
