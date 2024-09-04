@@ -12,7 +12,7 @@ pipeline {
                 sshagent(['ssh-credential-id']) {
                     sh '''
                         ssh -o StrictHostKeyChecking=no ssh facu@192.168.100.20 sudo systemctl stop apache2
-                    '''
+                    '''}
                 sh '''#!/bin/bash
                 status=$(systemctl is-active apache2)
                     
@@ -38,5 +38,4 @@ pipeline {
             }
         }
     }
-}    
-
+}
