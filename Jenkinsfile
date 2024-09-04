@@ -11,24 +11,19 @@ pipeline {
                 sh 'echo "Verificando instalación de Apache"'
                 sshagent(['4c2ca7fd-35ca-47e2-a54d-5f6d05e4c3a1']) {
                     sh '''
-                        ssh -o StrictHostKeyChecking=no facu@192.168.100.20 sudo systemctl stop apache2
-                    '''}
-                sh '''#!/bin/bash
-                status=$(systemctl is-active apache2)
-                    
- 
- 
-                if ( "$status" == "active" ){
-                    echo "Apache2 está corriendo."
-                    }
-                else {
-                    echo "Apache2 no está corriendo."
-                    echo "Instalando Apache2"
-                    sudo apt update -y
-                    sudo apt install apache2 -y
-                    sudo systemctl stop apache2
-                    sudo systemctl enable apache2
-                }'''
+                        ssh -o StrictHostKeyChecking=no facu@192.168.100.20
+                        status=$(systemctl is-active apache2)
+                        if ( "$status" == "active" ){
+                            echo "Apache2 está corriendo."
+                        }
+                        else {
+                            echo "Apache2 no está corriendo."
+                            echo "Instalando Apache2"
+                            sudo apt update -y
+                            sudo apt install apache2 -y
+                            sudo systemctl stop apache2
+                            sudo systemctl enable apache2
+                    }'''
   
                 }
             }
