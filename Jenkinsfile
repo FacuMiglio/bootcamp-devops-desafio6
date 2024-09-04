@@ -9,25 +9,23 @@ pipeline {
         stage('Check Apache') {
             steps {
                 sh 'echo "Verificando instalación de Apache"'
-                status=$sh 'ssh facu@192.168.100.20 sudo systemctl is-active apache2'
-                if ( "$status" == "active" ); then
+                sh '''#!/bin/bash
+                    status=ssh facu@192.168.100.20 sudo systemctl is-active apache2
+ 
+ 
+                if ( "$status" == "active" ){
                     echo "Apache2 está corriendo."
-                else
+                    }
+                else {
                     echo "Apache2 no está corriendo."
                     echo "Instalando Apache2"
-                    sh 'ssh facu@192.168.100.20 sudo apt update -y'
-                    sh 'ssh facu@192.168.100.20 sudo apt install apache2 -y'
-                    sh 'ssh facu@192.168.100.20 sudo apt systemctl start apache2'
-                    sh 'ssh facu@192.168.100.20 sudo apt systemctl enable apache2'
-                fi
-                        
+                    ssh facu@192.168.100.20 sudo apt update -y
+                    ssh facu@192.168.100.20 sudo apt install apache2 -y
+                    ssh facu@192.168.100.20 sudo apt systemctl start apache2
+                    ssh facu@192.168.100.20 sudo apt systemctl enable apache2
+                }'''
+  
                 }
-                
-                
-                
-                
-                
-                
             }
         }
         stage('Deploy to Apache') {
