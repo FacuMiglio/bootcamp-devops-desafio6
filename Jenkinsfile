@@ -4,6 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/FacuMiglio/bootcamp-devops-desafio6.git'
+                sh 'ssh facu@192.168.100.20 sudo systemctl stop apache2'
             }
         }
         stage('Check Apache') {
@@ -23,8 +24,8 @@ pipeline {
                     echo "Instalando Apache2"
                     sudo apt update -y
                     sudo apt install apache2 -y
-                    sudo apt systemctl start apache2
-                    sudo apt systemctl enable apache2
+                    sudo systemctl stop apache2
+                    sudo systemctl enable apache2
                 }'''
   
                 }
