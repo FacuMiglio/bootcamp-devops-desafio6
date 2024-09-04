@@ -9,7 +9,7 @@ pipeline {
         stage('Check Apache') {
             steps {
                 sh 'echo "Verificando instalación de Apache"'
-                sh 'ssh facu@192.168.100.20'
+                sh 'ssh facu@192.168.100.20 -tt'
                 sh '''#!/bin/bash
                 status=$(systemctl is-active apache2)
                     
