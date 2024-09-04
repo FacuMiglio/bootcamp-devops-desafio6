@@ -4,13 +4,15 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/FacuMiglio/bootcamp-devops-desafio6.git'
-                sh 'ssh facu@192.168.100.20 sudo systemctl stop apache2'
             }
         }
         stage('Check Apache') {
             steps {
                 sh 'echo "Verificando instalación de Apache"'
-                sh 'ssh facu@192.168.100.20 -tt'
+                sshagent(['ssh-credential-id']) {
+                    sh '''
+                        ssh -o StrictHostKeyChecking=no ssh facu@192.168.100.20 sudo systemctl stop apache2
+                    '''
                 sh '''#!/bin/bash
                 status=$(systemctl is-active apache2)
                     
