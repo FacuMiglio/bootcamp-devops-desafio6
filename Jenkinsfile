@@ -23,15 +23,16 @@ pipeline {
                             sudo apt install apache2 -y
                             sudo systemctl start apache2
                             sudo systemctl enable apache2
+                       
+                        }
                         fi
-                    }'''
-  
+                        '''
                 }
             }
         }
         stage('Deploy to Apache') {
             steps {
-                sh 'echo "<h1>Hello from Jenkins Pipeline 31/08/2024 22:46</h1> " '
+                sh 'echo "<h1>Hello from Jenkins Pipeline 31/08/2024 22:46</h1> "'
             }
         }
     }
