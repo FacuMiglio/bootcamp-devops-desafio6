@@ -13,7 +13,7 @@ pipeline {
                     sh '''
                         ssh -o StrictHostKeyChecking=no facu@192.168.100.20
                         status=$(systemctl is-active apache2)
-                        if ( "$status" == "active" ){
+                        if ( "$status" == "active" ); then {
                             echo "Apache2 está corriendo."
                         }
                         else {
